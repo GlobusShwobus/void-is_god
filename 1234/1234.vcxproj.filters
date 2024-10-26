@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="main">
+      <UniqueIdentifier>{eca727a7-b877-45c6-86bd-dc40a3880a8b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="void%2ais_god">
+      <UniqueIdentifier>{a950a3da-e646-48c9-adc9-e493702ca9e3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp">
+      <Filter>main</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="vec2.h">
+      <Filter>void%2ais_god</Filter>
+    </ClInclude>
+    <ClInclude Include="dude.h">
+      <Filter>void%2ais_god</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
