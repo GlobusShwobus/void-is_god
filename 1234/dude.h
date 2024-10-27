@@ -2,8 +2,8 @@
 #include "vec2.h"
 
 class dude {
-	vec2 pos;
-	vec2 dimensions;
-	vec2 vel;
+	vec2i pos;
+	vec2i dimensions;
+	vec2i vel;
 
 };

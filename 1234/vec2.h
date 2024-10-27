@@ -2,36 +2,49 @@
 
 #include <cmath>
 
-class vec2
+class vec2i
 {
 public:
 	float x = 0;
 	float y = 0;
 
-	bool operator==(const vec2& rhs) {
+	bool operator==(const vec2i& rhs) {
 		return (this->x == rhs.x) && (this->y == rhs.y);
 	}
-	bool operator!=(const vec2& rhs) {
+	bool operator!=(const vec2i& rhs) {
 		return !(*this == rhs);
 	}
 
-	vec2 operator+(const vec2& rhs) {
-		return vec2{ x + rhs.x, y + rhs.y };
+	vec2i operator+(const vec2i& rhs)const {
+		return vec2i{ x + rhs.x, y + rhs.y };
 	}
-	vec2 operator-(const vec2& rhs) {
-		return vec2{ x - rhs.x, y - rhs.y };
-	}
-
-	vec2& operator +=(const vec2& rhs) {
+	vec2i& operator +=(const vec2i& rhs) {
 		x += rhs.x;
 		y += rhs.y;
 		return *this;
 	}
 
-	vec2 & operator-=(const vec2& rhs) {
+	vec2i operator-(const vec2i& rhs)const {
+		return vec2i{ x - rhs.x, y - rhs.y };
+	}
+	vec2i& operator-=(const vec2i& rhs) {
 		x -= rhs.x;
 		y -= rhs.y;
 		return *this;
+	}
+
+	vec2i operator*(int rhs)const {
+		return vec2i{ x * rhs, y * rhs };
+	}
+	vec2i& operator*=(int rhs) {
+		return *this = *this * rhs;
+	}
+
+	vec2i operator/(int rhs)const {
+		return vec2i{ x / rhs,y / rhs };
+	}
+	vec2i& operator/=(int rhs) {
+		return *this = *this / rhs;
 	}
 
 
