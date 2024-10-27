@@ -56,4 +56,7 @@ public:
 	float getLength() {
 		return std::sqrt((x * x) + (y + y));
 	}
+	float getLengthSquared() {
+		return (x * x) + (y + y);
+	}
 };
