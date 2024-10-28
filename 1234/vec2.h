@@ -4,9 +4,11 @@
 
 class vec2i
 {
+public:
+
 	int x = 0;
 	int y = 0;
-public:
+
 	vec2i(int X, int Y) :x(X), y(Y) {}
 	vec2i() = default;
 
@@ -45,7 +47,6 @@ public:
 		return *this = *this / rhs;
 	}
 
-
 	void scale(int _x) {
 		x *= _x;
 		y *= _x;
@@ -62,9 +63,11 @@ public:
 
 class vec2f
 {
+public:
+
 	float x = 0;
 	float y = 0;
-public:
+
 	vec2f(float X, float Y) :x(X), y(Y) {}
 	vec2f() = default;
 
