@@ -12,10 +12,10 @@ public:
 	vec2i(int X, int Y) :x(X), y(Y) {}
 	vec2i() = default;
 
-	bool operator==(const vec2i& rhs) {
+	bool operator==(const vec2i& rhs)const {
 		return (this->x == rhs.x) && (this->y == rhs.y);
 	}
-	bool operator!=(const vec2i& rhs) {
+	bool operator!=(const vec2i& rhs)const {
 		return !(*this == rhs);
 	}
 
@@ -47,17 +47,22 @@ public:
 		return *this = *this / rhs;
 	}
 
-	void scale(int _x) {
-		x *= _x;
-		y *= _x;
-	}
 
-	float getLengthSqrt() {
+	float getLengthSqrt()const {
 		return std::sqrt((x * x) + (y + y));
 	}
-	float getLengthSq() {
+	int getLengthSq()const {
 		return (x * x) + (y + y);
 	}
+
+	vec2i& normalize() {
+		return *this = getNormalized();
+	}
+	vec2i getNormalized()const {
+		const float len = getLengthSqrt();
+		return *this * (1.0f / len);
+	}
+
 };
 
 
@@ -107,15 +112,18 @@ public:
 	}
 
 
-	void scale(float _x) {
-		x *= _x;
-		y *= _x;
-	}
 
-	float getLengthSqrt() {
+	float getLengthSqrt()const {
 		return std::sqrt((x * x) + (y + y));
 	}
-	float getLengthSq() {
+	float getLengthSq()const {
 		return (x * x) + (y + y);
+	}
+	vec2f& normalize() {
+		return *this = getNormalized();
+	}
+	vec2f getNormalized()const {
+		const float len = getLengthSqrt();
+		return *this * (1.0f / len);
 	}
 };
