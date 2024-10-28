@@ -17,9 +17,6 @@
     <ClInclude Include="vec2.h">
       <Filter>void%2ais_god</Filter>
     </ClInclude>
-    <ClInclude Include="dude.h">
-      <Filter>void%2ais_god</Filter>
-    </ClInclude>
     <ClInclude Include="clock.h">
       <Filter>void%2ais_god</Filter>
     </ClInclude>
