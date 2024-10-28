@@ -49,8 +49,9 @@ public:
 
 	void setLenght(int length) {
 		float currentLen = getLengthSqrt();
-
-		*this = *this / currentLen * length;
+		if (currentLen != 0.0f) {
+			*this = *this / currentLen * length;
+		}
 	}
 
 	float getLengthSqrt()const {
@@ -65,7 +66,10 @@ public:
 	}
 	vec2i getNormalized()const {
 		const float len = getLengthSqrt();
-		return *this * (1.0f / len);
+		if (len != 0.0f) {
+			return *this * (1.0f / len);
+		}
+		return *this;;
 	}
 
 };
@@ -134,6 +138,9 @@ public:
 	}
 	vec2f getNormalized()const {
 		const float len = getLengthSqrt();
-		return *this * (1.0f / len);
+		if (len != 0.0f) {
+			return *this * (1.0f / len);
+		}
+		return *this;
 	}
 };
