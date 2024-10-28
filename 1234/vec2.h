@@ -47,6 +47,11 @@ public:
 		return *this = *this / rhs;
 	}
 
+	void setLenght(int length) {
+		float currentLen = getLengthSqrt();
+
+		*this = *this / currentLen * length;
+	}
 
 	float getLengthSqrt()const {
 		return std::sqrt((x * x) + (y + y));
@@ -112,6 +117,11 @@ public:
 	}
 
 
+	void setLenght(float length) {
+		float currentLen = getLengthSqrt();
+
+		*this = *this / currentLen * length;
+	}
 
 	float getLengthSqrt()const {
 		return std::sqrt((x * x) + (y + y));
