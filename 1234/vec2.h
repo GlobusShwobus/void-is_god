@@ -123,8 +123,9 @@ public:
 
 	void setLenght(float length) {
 		float currentLen = getLengthSqrt();
-
-		*this = *this / currentLen * length;
+		if (currentLen != 0.0f) {
+			*this = *this / currentLen * length;
+		}
 	}
 
 	float getLengthSqrt()const {
