@@ -20,5 +20,8 @@
     <ClInclude Include="clock.h">
       <Filter>void%2ais_god</Filter>
     </ClInclude>
+    <ClInclude Include="RectF.h">
+      <Filter>void%2ais_god</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
