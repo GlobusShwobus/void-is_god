@@ -4,22 +4,32 @@
 
 class RectF {
 public:
-
-	float top = 0;
-	float bottom = 0;
-	float left = 0;
-	float right = 0;
-
-
-	RectF() = default;
-	RectF(float topin, float botin, float leftin, float rightin) :top(topin), bottom(botin), left(leftin), right(rightin) {}
-	RectF(const vec2f& topleft, const vec2f& bottomRight) :RectF(topleft.y, bottomRight.y, topleft.x, bottomRight.x) {}
-	RectF(const vec2f& topleft, float width, float height) :RectF(topleft, topleft + vec2f(width, height)) {}
+	float left = 0;	   //is the smallest x-value within the rectangle.
+	float top = 0;	   //is the smallest y-value within the rectangle.
+	float right = 0;   //is the largest x-value within the rectangle.
+	float bottom = 0;  //is the largest y-value within the rectangle.
 
 
-	bool isOverLappingWith(const RectF& other)const {
-		return right > other.left && left<other.right
-			&& bottom>other.top && top < other.bottom;
+
+	RectF(float LEFT, float TOP, float RIGHT, float BOTTOM) :left(LEFT), top(TOP), right(RIGHT), bottom(BOTTOM) {}
+
+	RectF(const vec2f& pos, float width, float height) :left(pos.x), top(pos.y), right(pos.x + width), bottom(pos.y + height) {}
+
+	RectF(const vec2f& pos, const vec2f& size) :left(pos.x), top(pos.y), right(pos.x + size.x), bottom(pos.y + size.y) {}
+
+
+	float width()const {
+		return right - left;
+	}
+	float height()const {
+		return bottom - top;
 	}
 
+
+	bool contains(const RectF& other) {
+		return !(other.right <= left ||
+			other.left >= right ||
+			other.bottom <= top ||
+			other.top >= bottom);
+	}
 };
