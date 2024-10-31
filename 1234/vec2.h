@@ -48,13 +48,13 @@ public:
 	}
 
 	void setLenght(int length) {
-		float currentLen = getLengthSqrt();
+		int currentLen = getLengthSqrt();
 		if (currentLen != 0.0f) {
 			*this = *this / currentLen * length;
 		}
 	}
 
-	float getLengthSqrt()const {
+	int getLengthSqrt()const {
 		return std::sqrt((x * x) + (y + y));
 	}
 	int getLengthSq()const {
