@@ -33,4 +33,10 @@ public:
 		return x1 < other.x2 && x2 > other.x1 && y1 < other.y2 && y2 > other.y1;
 	}
 
+	RectF getExpanded(float offset)const {
+		return RectF(x1 - offset, y1 - offset, x2 + offset, y2 + offset);
+	}
+	vec2f getCenter()const {
+		return vec2f((x1 + x2) / 2.0f, (y1 + y2) / 2.0f);
+	}
 };
