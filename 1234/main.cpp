@@ -19,11 +19,21 @@ int main() {
 	}
 
 
-	int test123 = pepega(1, 2);
 
-	std::cout << test123 << std::endl;
 
-	
+	std::cout << pepega(0, 0)<<'\n'<< pepega(0, 1) << '\n' << pepega(0, 2) << '\n' << pepega(0, 3) << '\n' << pepega(0, 4) << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << pepega(0, 0) <<'\n'<<pepega(1, 0) << '\n' << pepega(2, 0) << '\n' << pepega(3, 0) << '\n' << pepega(4, 0) << std::endl;
+	pepega.resize2(2, 5);
+	std::cout << std::endl;
+	std::cout << std::endl;
+	std::cout << pepega(0, 0) << '\n' << pepega(0, 1) << '\n' << pepega(0, 2) << '\n' << pepega(0, 3) << '\n' << pepega(0, 4) << std::endl;
+	std::cout << std::endl;
+	std::cout << std::endl;
+	//assert failed
+	//std::cout << pepega(0, 0) << '\n' << pepega(1, 0) << '\n' << pepega(2, 0) << '\n' << pepega(3, 0) << '\n' << pepega(4, 0) << std::endl;
+	std::cout << pepega(0, 0) << '\n' << pepega(1, 0) << std::endl;
 	return 1;
 }
 

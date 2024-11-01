@@ -2,6 +2,7 @@
 
 #include "vec2.h"
 #include <assert.h>
+#include <utility>
 
 template<typename Object> class Array2D {
 	
@@ -42,6 +43,7 @@ public:
 	unsigned int getWidth()const { return width; }
 	unsigned int getHeight()const { return height; }
 	
+	//lose offset if newsize is smaller, and does not remap the whole shit
 	void resize(unsigned int newWidth, unsigned int newHeight) {
 		assert(newWidth > 0);
 		assert(newHeight > 0);
@@ -51,7 +53,7 @@ public:
 		for (int y = 0; y < newHeight; y++) {
 			for (int x = 0; x < newWidth; x++) {
 				if (x < width && y < height) {
-					tempcopy[y * newWidth + x] = arry[y * width + x];
+					tempcopy[y * newWidth + x] = std::move(arry[y * width + x]);
 				}
 			}
 		}
@@ -62,7 +64,8 @@ public:
 		width = newWidth;
 		height = newHeight;
 	}
-	void resizeDirty(unsigned int newWidth, unsigned int newHeight) {
+	//lose the tail in 1D formm if new size is smaller, and remaps the whole shit
+	void resize2(unsigned int newWidth, unsigned int newHeight) {
 		assert(newWidth > 0);
 		assert(newHeight > 0);
 
@@ -71,7 +74,7 @@ public:
 		unsigned int OldSize = width * height;
 
 		for (int index = 0; index < newWidth * newHeight && index < OldSize; index++) {
-			tempcopy[index] = arry[index];
+			tempcopy[index] = std::move(arry[index]);
 		}
 
 		delete[]arry;
