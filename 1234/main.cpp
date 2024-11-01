@@ -18,6 +18,20 @@ int main() {
 		}
 	}
 
+	//Array2D<float> kekw = pepega;
+
+	Array2D<int> huh = pepega;
+
+	std::cout << huh(0, 1) << " " << huh(0, 2) << std::endl;
+
+	std::cout << "\n\n\n" << pepega(0, 1) << " " << pepega(0, 2) << std::endl;
+
+	Array2D<int> pidor = std::move(pepega);
+
+	std::cout << pidor(0, 1) << " " << pidor(0, 2) << std::endl;
+
+	//std::cout << "\n\n\n" << pepega(0, 1) << " " << pepega(0, 2) << std::endl;
+
 	return 1;
 }
 
