@@ -19,6 +19,65 @@ public:
 
 		arry = new Object[width * height];
 	}
+	Array2D(const Array2D& rhs) :width(rhs.width), height(rhs.height) {
+
+		if (arry) { delete[] arry; }
+		arry = new Object[width * height];
+
+		for (int i = 0; i < width * height; i++) {
+			arry[i] = rhs.arry[i];
+		}
+	}
+	Array2D(Array2D&& rhs)noexcept :width(rhs.width), height(rhs.height) {
+		
+		if (arry) { delete[] arry; }
+		arry = new Object[width * height];
+
+		for (int i = 0; i < width * height; i++) {
+			arry[i] = std::move(rhs.arry[i]);
+		}
+
+		delete[]rhs.arry;
+		rhs.arry = nullptr;
+		rhs.width = 0;
+		rhs.height = 0;
+	}
+	Array2D& operator=(const Array2D& rhs) {
+		if (this != &rhs) {
+			width = rhs.width;
+			height = rhs.height;
+
+			if (arry) { delete[]arry; }
+			arry = new Object[width * height];
+
+			for (int i = 0; i < width * height; i++) {
+				arry[i] = rhs.arry[i];
+			}
+		}
+		return *this;
+	}
+	Array2D& operator=(Array2D&& rhs)noexcept {
+		if (this != &rhs) {
+			width = rhs.width;
+			height = rhs.height;
+
+			if (arry) { delete[]arry; }
+			arry = new Object[width * height];
+
+			for (int i = 0; i < width * height; i++) {
+				arry[i] = std::move(rhs.arry[i]);
+			}
+			delete[] rhs.arry;
+			rhs.width = 0;
+			rhs.height = 0;
+		}
+		return *this;
+	}
+
+	~Array2D() {
+		delete[] arry;
+	}
+
 
 	const Object& operator()(unsigned int x, unsigned int y)const {
 		assert(x < width && y < height);
@@ -42,8 +101,14 @@ public:
 
 	unsigned int getWidth()const { return width; }
 	unsigned int getHeight()const { return height; }
-	
-	//lose offset if newsize is smaller, and does not remap the whole shit
+};
+
+
+
+
+
+/*
+//lose offset if newsize is smaller, and does not remap the whole shit
 	void resize(unsigned int newWidth, unsigned int newHeight) {
 		assert(newWidth > 0);
 		assert(newHeight > 0);
@@ -84,11 +149,20 @@ public:
 		height = newHeight;
 	}
 
-
-	~Array2D() {
-		delete[] arry;
+	static void copy(Array2D<Object>& lhs, const Array2D<Object>& rhs) {
+	
+		static_assert(std::is_same<lhs.arry, rhs.arry>::value, "Lhs type must == rhs type");
+	
+		if (lhs.arry) { delete[] lhs.arry; }
+		lhs.width = rhs.width;
+		lhs.height = rhs.height;
+	
+	
+		lhs.arry = new Object[lhs.width * lhs.height];
+	
+		for (int i = 0; i < lhs.width * lhs.height; i++) {
+			lhs.arry[i] = rhs.arry[i];
+		}
 	}
-private:
-	Array2D(const Array2D<Object>&) = delete;
-	Array2D& operator=(const Array2D<Object>&) = delete;
-};
+
+*/
